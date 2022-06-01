@@ -12,3 +12,7 @@ func TestIncreaseSlice(t *testing.T) {
 	fmt.Println(nums)
 	fmt.Println(arr)
 }
+
+func TestPrintLetterAndNumber(t *testing.T) {
+	printLetterAndNumber()
+}
