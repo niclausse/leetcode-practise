@@ -20,6 +20,26 @@ func preOrder1(root *BinaryTreeNode) {
 	preOrder1(root.Rgt)
 }
 
+func preorder1(root *BinaryTreeNode) (result []int) {
+	var (
+		stack []*BinaryTreeNode
+		cur   = root
+	)
+
+	for cur != nil || len(stack) > 0 {
+		for cur != nil {
+			result = append(result, cur.Val)
+			stack = append(stack, cur)
+			cur = cur.Lft
+		}
+
+		cur = stack[len(stack)-1].Rgt
+		stack = stack[:len(stack)-1]
+	}
+
+	return result
+}
+
 // 前序遍历-迭代
 func preorder(root *BinaryTreeNode) (result []int) {
 	var (
