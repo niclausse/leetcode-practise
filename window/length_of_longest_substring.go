@@ -30,3 +30,32 @@ func max(x, y int) int {
 
 	return y
 }
+
+// 思路： 使用双指针, 右指针不断向后移动， 判断区间内有无重复字符
+func lengthOfLongestSubStringPractise2(s string) int {
+	if len(s) == 0 {
+		return 0
+	}
+
+	result, rgt, lft := 1, 0, 0
+
+	seen := make(map[byte]bool)
+	for rgt < len(s) {
+		// 处理左指针需要后移的case
+		for lft < rgt && seen[s[rgt]] {
+			delete(seen, s[lft])
+			lft++
+		}
+
+		// 处理右指针后移的case
+		tmpLen := rgt - lft + 1
+		if result < tmpLen {
+			result = tmpLen
+		}
+
+		seen[s[rgt]] = true
+		rgt++
+	}
+
+	return result
+}
