@@ -2,6 +2,21 @@ package leetcode_practise
 
 import "strings"
 
+func int2Roma(num int) string {
+	values := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 5, 1}
+	romas := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+
+	var sb strings.Builder
+	for i := 0; i < len(values); i++ {
+		for num >= values[i] {
+			num -= values[i]
+			sb.WriteString(romas[i])
+		}
+	}
+
+	return sb.String()
+}
+
 // 1～3999
 func convert(num int) string {
 	hashTable := map[int]string{

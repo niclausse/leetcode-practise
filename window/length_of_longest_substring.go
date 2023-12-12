@@ -1,5 +1,25 @@
 package window
 
+func findLongestSubString(s string) []string {
+	hash := make(map[byte]bool)
+	subHash := make(map[int][]string)
+	length, lft, rgt := 0, 0, 1
+
+	for lft < rgt && rgt < len(s) {
+		for hash[s[rgt]] && lft < rgt {
+			delete(hash, s[lft])
+			lft++
+		}
+
+		rgt++
+		hash[s[rgt]] = true
+		length = max(length, rgt-lft+1)
+		subHash[length] = append(subHash[length], s[lft:rgt+1])
+	}
+
+	return subHash[length]
+}
+
 // 题3：无重复字符的最大子串的长度
 func lengthOfLongestSubString(s string) int {
 	if len(s) == 0 {

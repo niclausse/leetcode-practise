@@ -19,3 +19,11 @@ func TestValid(t *testing.T) {
 func TestIsPalindrome(t *testing.T) {
 	t.Log(isPalindrome(",12!21"))
 }
+
+func TestLcp(t *testing.T) {
+	pre := lcp("flows", "flower")
+	if pre != "flow" {
+		t.Errorf("longest conmmon prefix should be 'flow'")
+		return
+	}
+}
