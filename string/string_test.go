@@ -27,3 +27,12 @@ func TestLcp(t *testing.T) {
 		return
 	}
 }
+
+func TestLongestPalindrome(t *testing.T) {
+	s := "cbbd"
+	p := longestPalindrome(s)
+	if p != "bb" {
+		t.Errorf("cbbd's palindrome should be bb")
+	}
+	fmt.Println(p)
+}

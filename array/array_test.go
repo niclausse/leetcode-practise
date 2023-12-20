@@ -15,3 +15,11 @@ func TestMaxArea(t *testing.T) {
 	height := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
 	fmt.Println(maxArea(height))
 }
+
+func TestRemoveDuplicates(t *testing.T) {
+	nums := []int{0, 0, 1, 2, 3, 4, 4, 5, 6}
+	length := removeDuplicates(nums)
+	if length != 7 {
+		t.Errorf("删除后的数组长度应为7")
+	}
+}
